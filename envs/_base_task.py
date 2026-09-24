@@ -1,4 +1,5 @@
 import os
+from ._GLOBAL_CONFIGS import ASSETS_PATH
 import re
 import sapien.core as sapien
 from sapien.render import clear_cache as sapien_clear_cache
@@ -276,7 +277,7 @@ class Base_Task(gym.Env):
 
         if self.random_background:
             texture_type = "seen" if not self.eval_mode else "unseen"
-            directory_path = f"./assets/background_texture/{texture_type}"
+            directory_path = f"{ASSETS_PATH}background_texture/{texture_type}"
             file_count = len(
                 [name for name in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, name))])
 

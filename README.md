@@ -1,7 +1,7 @@
 > **Unitzero fork.** Installable as a package (`pip install git+https://github.com/Unitzero-ai/BiCoord-Bench`,
 > plus CuRobo): the tasks are `bicoord_bench.envs.<task>`, and
 > `python -m bicoord_bench.assets` downloads the assets (default `~/.cache/bicoord-bench`,
-> or `$BICOORD_DATA`). Run tasks from that directory. The checkout still works as upstream documents.
+> or `$BICOORD_DATA`). The checkout still works as upstream documents.
 
 # BiCoord: A Bimanual Manipulation Benchmark towards Long-Horizon Spatial-Temporal Coordination
 

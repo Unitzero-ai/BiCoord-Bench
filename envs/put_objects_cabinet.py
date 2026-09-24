@@ -1,4 +1,5 @@
 from ._base_task import Base_Task
+from ._GLOBAL_CONFIGS import ASSETS_PATH
 from .utils import *
 import sapien
 import glob
@@ -50,7 +51,7 @@ class put_objects_cabinet(Base_Task):
             )
             t += 1
         def get_available_model_ids(modelname):
-            asset_path = os.path.join("assets/objects", modelname)
+            asset_path = os.path.join(ASSETS_PATH + "objects", modelname)
             json_files = glob.glob(os.path.join(asset_path, "model_data*.json"))
             available_ids = []
             for file in json_files:
