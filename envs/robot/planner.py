@@ -7,7 +7,7 @@ import numpy as np
 import toppra as ta
 from mplib.sapien_utils import SapienPlanner, SapienPlanningWorld
 import transforms3d as t3d
-import envs._GLOBAL_CONFIGS as CONFIGS
+from .. import _GLOBAL_CONFIGS as CONFIGS
 
 
 # ********************** MplibPlanner **********************

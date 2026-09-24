@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bicoord-bench"
+version = "0.1.0"
+description = "BiCoord-Bench's simulated tasks, installable as bicoord_bench"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+# Also needs CuRobo (nvidia-curobo), which only ships source: see
+# https://curobo.org/get_started/1_install_instructions.html.
+dependencies = [
+    "gymnasium",
+    "h5py",
+    "huggingface_hub",
+    "imageio",
+    "mplib==0.2.1",
+    "numpy",
+    "open3d",
+    "opencv-python",
+    "pillow",
+    "pyyaml",
+    "sapien==3.0.0b1",
+    "toppra",
+    "torch",
+    "transforms3d",
+    "trimesh",
+]
+
+# The repository layout stays as upstream's (envs/, task_config/, ...), so the
+# checkout keeps working as before; installed, the same directories sit under
+# bicoord_bench/, where envs/_GLOBAL_CONFIGS.py finds them.
+[tool.setuptools]
+packages = [
+    "bicoord_bench",
+    "bicoord_bench.envs",
+    "bicoord_bench.envs.camera",
+    "bicoord_bench.envs.robot",
+    "bicoord_bench.envs.utils",
+    "bicoord_bench.task_config",
+    "bicoord_bench.description.task_instruction",
+]
+
+[tool.setuptools.package-dir]
+"bicoord_bench.envs" = "envs"
+"bicoord_bench.task_config" = "task_config"
+"bicoord_bench.description.task_instruction" = "description/task_instruction"
+
+[tool.setuptools.package-data]
+"bicoord_bench.task_config" = ["*.yml"]
+"bicoord_bench.description.task_instruction" = ["*.json"]

@@ -5,7 +5,11 @@ ROOT_PATH = os.path.abspath(__file__)
 ROOT_PATH = ROOT_PATH[:ROOT_PATH.rfind("/")]
 ROOT_PATH = ROOT_PATH[:ROOT_PATH.rfind("/") + 1]
 
-ASSETS_PATH = os.path.join(ROOT_PATH, "assets/")
+# Where assets/ lives: the checkout, or $BICOORD_DATA for an installed package
+# (see bicoord_bench.assets).
+DATA_PATH = os.path.join(os.environ.get("BICOORD_DATA") or ROOT_PATH, "")
+
+ASSETS_PATH = os.path.join(DATA_PATH, "assets/")
 EMBODIMENTS_PATH = os.path.join(ASSETS_PATH, "embodiments/")
 TEXTURES_PATH = os.path.join(ASSETS_PATH, "background_texture/")
 CONFIGS_PATH = os.path.join(ROOT_PATH, "task_config/")

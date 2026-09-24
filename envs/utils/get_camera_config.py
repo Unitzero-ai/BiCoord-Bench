@@ -1,5 +1,5 @@
 import yaml, os
-from envs._GLOBAL_CONFIGS import CONFIGS_PATH
+from .._GLOBAL_CONFIGS import CONFIGS_PATH
 
 
 def get_camera_config(camera_type):

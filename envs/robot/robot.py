@@ -10,8 +10,8 @@ import os
 import transforms3d as t3d
 from copy import deepcopy
 import sapien.core as sapien
-import envs._GLOBAL_CONFIGS as CONFIGS
-from envs.utils import transforms
+from .. import _GLOBAL_CONFIGS as CONFIGS
+from ..utils import transforms
 from .planner import CuroboPlanner
 import torch.multiprocessing as mp
 
@@ -255,8 +255,8 @@ class Robot:
         print("right ee: ", self.right_ee.get_name())
 
     def set_planner(self, scene=None):
-        abs_left_curobo_yml_path = os.path.join(CONFIGS.ROOT_PATH, self.left_curobo_yml_path)
-        abs_right_curobo_yml_path = os.path.join(CONFIGS.ROOT_PATH, self.right_curobo_yml_path)
+        abs_left_curobo_yml_path = os.path.join(CONFIGS.DATA_PATH, self.left_curobo_yml_path)
+        abs_right_curobo_yml_path = os.path.join(CONFIGS.DATA_PATH, self.right_curobo_yml_path)
 
         self.communication_flag = (abs_left_curobo_yml_path != abs_right_curobo_yml_path)
 
