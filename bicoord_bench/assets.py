@@ -37,11 +37,14 @@ def ensure(data_dir: str | os.PathLike | None = None) -> Path:
             with zipfile.ZipFile(hf_hub_download(repo, name, repo_type="dataset")) as z:
                 z.extractall(assets / dest)
             done.touch()
-    # What upstream's script/update_embodiment_config_path.py does.
+    # What upstream's script/update_embodiment_config_path.py does. Only
+    # changed files are written, since running tasks may be reading them.
     for template in (assets / "embodiments").rglob("*_tmp.yml"):
         text = template.read_text().replace("${ASSETS_PATH}", str(assets.parent))
         text = text.replace("$ASSETS_PATH", str(assets.parent))
-        template.with_name(template.name.replace("_tmp.yml", ".yml")).write_text(text)
+        config = template.with_name(template.name.replace("_tmp.yml", ".yml"))
+        if not config.exists() or config.read_text() != text:
+            config.write_text(text)
     os.environ["BICOORD_DATA"] = str(assets.parent)
     return assets.parent
 
