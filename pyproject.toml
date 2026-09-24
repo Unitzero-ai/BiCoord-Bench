@@ -19,15 +19,16 @@ dependencies = [
     "imageio",
     "mplib==0.2.1",
     "numpy",
-    "open3d",
+    # Upstream pins 0.18.0, which has no Python 3.12 wheels.
+    "open3d==0.19.0",
     "opencv-python",
     "pillow",
     "pyyaml",
     "sapien==3.0.0b1",
-    "toppra",
+    "toppra>=0.6",
     "torch",
-    "transforms3d",
-    "trimesh",
+    "transforms3d==0.4.2",
+    "trimesh==4.4.3",
 ]
 
 # The repository layout stays as upstream's (envs/, task_config/, ...), so the
